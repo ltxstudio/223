@@ -11,16 +11,10 @@ const ChapterDetails = ({ language }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                let chapterResponse;
-                if (language === 'bn') {
-                    chapterResponse = await fetch(`/sura/${id}`);
-                } else {
-                    chapterResponse = await fetch(`/json/chapters/${language}/${id}.json`);
-                }
-
+                const chapterResponse = await fetch(`https://api.quran.com/api/v4/chapters/${id}`);
                 if (!chapterResponse.ok) throw new Error('Chapter data not found');
                 const chapterData = await chapterResponse.json();
-                setChapter(chapterData);
+                setChapter(chapterData.data);
 
                 const audioResponse = await fetch(`http://api.alquran.cloud/v1/surah/${id}/ar.alafasy`);
                 if (!audioResponse.ok) throw new Error('Audio data not found');
@@ -35,14 +29,14 @@ const ChapterDetails = ({ language }) => {
         };
 
         fetchData();
-    }, [id, language]);
+    }, [id]);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
     return (
         <div className="mt-4 p-4 bg-white rounded shadow">
-            <h2 className="text-2xl font-bold mb-4">{chapter.name} ({chapter.translation})</h2>
+            <h2 className="text-2xl font-bold mb-4">{chapter.name} ({chapter.translated_name})</h2>
             <audio controls className="w-full mb-4">
                 <source src={audioUrl} type="audio/mp3" />
                 Your browser does not support the audio element.
