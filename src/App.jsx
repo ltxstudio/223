@@ -27,7 +27,14 @@ const App = () => {
                                 <select id="language" onChange={(e) => setLanguage(e.target.value)} value={language} className="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                                     <option value="en">English</option>
                                     <option value="bn">Bengali</option>
-                                    {/* Add more options */}
+                                    <option value="es">Spanish</option>
+                                    <option value="fr">French</option>
+                                    <option value="id">Indonesian</option>
+                                    <option value="ru">Russian</option>
+                                    <option value="sv">Swedish</option>
+                                    <option value="tr">Turkish</option>
+                                    <option value="ur">Urdu</option>
+                                    <option value="zh">Chinese</option>
                                 </select>
                             </div>
                             <ChapterList chapters={chapters} />
