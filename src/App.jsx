@@ -4,7 +4,7 @@ import ChapterList from './components/ChapterList';
 import ChapterDetails from './components/ChapterDetails';
 import Navbar from './components/Navbar';
 import About from './components/About';
-import About from './components/Contact';
+import Contact from './components/Contact';
 
 const App = () => {
     const [language, setLanguage] = useState('bn');
