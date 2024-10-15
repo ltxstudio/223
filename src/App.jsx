@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import About from './components/About';
 
 const App = () => {
-    const [language, setLanguage] = useState('en');
+    const [language, setLanguage] = useState('bn');
     const [chapters, setChapters] = useState([]);
 
     useEffect(() => {
