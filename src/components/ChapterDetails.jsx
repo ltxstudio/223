@@ -11,18 +11,23 @@ const ChapterDetails = ({ language }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const chapterResponse = await fetch(`/json/chapters/${language}/${id}.json`);
+                const chapterUrl = `/json/chapters/${language}/${id}.json`;
+                console.log(`Fetching chapter data from: ${chapterUrl}`);
+                const chapterResponse = await fetch(chapterUrl);
                 if (!chapterResponse.ok) throw new Error('Chapter data not found');
                 const chapterData = await chapterResponse.json();
                 setChapter(chapterData);
 
-                const audioResponse = await fetch(`http://api.alquran.cloud/v1/surah/${id}/ar.alafasy`);
+                const audioUrl = `http://api.alquran.cloud/v1/surah/${id}/ar.alafasy`;
+                console.log(`Fetching audio data from: ${audioUrl}`);
+                const audioResponse = await fetch(audioUrl);
                 if (!audioResponse.ok) throw new Error('Audio data not found');
                 const audioData = await audioResponse.json();
                 setAudioUrl(audioData.data.audio);
 
                 setLoading(false);
             } catch (err) {
+                console.error(err.message);
                 setError(err.message);
                 setLoading(false);
             }
