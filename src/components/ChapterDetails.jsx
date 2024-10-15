@@ -11,7 +11,13 @@ const ChapterDetails = ({ language }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const chapterResponse = await fetch(`/json/chapters/${language}/${id}.json`);
+                let chapterResponse;
+                if (language === 'bn') {
+                    chapterResponse = await fetch(`/sura/${id}`);
+                } else {
+                    chapterResponse = await fetch(`/json/chapters/${language}/${id}.json`);
+                }
+
                 if (!chapterResponse.ok) throw new Error('Chapter data not found');
                 const chapterData = await chapterResponse.json();
                 setChapter(chapterData);
