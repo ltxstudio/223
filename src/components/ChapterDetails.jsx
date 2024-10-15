@@ -46,6 +46,7 @@ const ChapterDetails = ({ language }) => {
                     <div key={verse.id} className="p-4 bg-gray-100 rounded mb-4">
                         <h3 className="text-lg font-semibold">Verse {verse.id}</h3>
                         <p>{verse.text}</p>
+                        {/* Add more details if available */}
                     </div>
                 ))}
             </div>
