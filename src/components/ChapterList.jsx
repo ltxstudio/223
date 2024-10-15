@@ -6,7 +6,7 @@ const ChapterList = ({ chapters }) => {
         <ul className="space-y-2">
             {chapters.map(chapter => (
                 <li key={chapter.id} className="p-4 bg-white rounded shadow">
-                    <Link to={`/chapter/${chapter.id}`}>
+                    <Link to={`/surah/${chapter.id}`}>
                         {chapter.name} ({chapter.translation})
                     </Link>
                 </li>
